@@ -2,33 +2,34 @@ import streamlit as st
 import plotly.graph_objects as go
 import numpy as np
 
-# إعدادات صفحة مشروع التخرج
-st.set_page_config(page_title="مشروع التخرج - خلود", layout="wide")
+# إعدادات الصفحة
+st.set_page_config(page_title="عرض المسابقة - خلود", layout="wide")
 
 st.title("النمذجة البصرية لأسطح ريمان")
 st.write("قسم الرياضيات - جامعة مصراتة")
 
-# حسابات سطح ريمان (دالة الجذر كمثال مبهر)
-r = np.linspace(0, 2, 50)
-theta = np.linspace(0, 4 * np.pi, 100)
-r, theta = np.meshgrid(r, theta)
+# --- الرسمة الأولى: دالة الجذر ---
+st.header("1. سطح ريمان لدالة الجذر التربيعي")
+r1 = np.linspace(0, 2, 50)
+theta1 = np.linspace(0, 4 * np.pi, 100)
+r1, theta1 = np.meshgrid(r1, theta1)
+x1 = r1 * np.cos(theta1)
+y1 = r1 * np.sin(theta1)
+z1 = np.sqrt(r1) * np.sin(theta1/2)
 
-x = r * np.cos(theta)
-y = r * np.sin(theta)
-z = np.sqrt(r) * np.sin(theta/2)
+fig1 = go.Figure(data=[go.Surface(x=x1, y=y1, z=z1, colorscale='Portland')])
+st.plotly_chart(fig1, use_container_width=True)
 
-# إنشاء السطح التفاعلي
-fig = go.Figure(data=[go.Surface(x=x, y=y, z=z, colorscale='Portland', opacity=0.8)])
+st.write("---") # خط فاصل بين الرسمتين
 
-fig.update_layout(
-    title='تمثيل سطح ريمان للدالة الجذرية 3D',
-    scene=dict(
-        xaxis_title='X (Real)',
-        yaxis_title='Y (Imaginary)',
-        zaxis_title='Z (Value)'
-    ),
-    margin=dict(l=0, r=0, b=0, t=40)
-)
+# --- الرسمة الثانية: دالة جديدة (مثلاً اللوغاريتم) ---
+st.header("2. سطح ريمان لدالة اللوغاريتم الطبيعي")
+r2 = np.linspace(0.1, 2, 50) # نبدأ من 0.1 لأن لوغاريتم الصفر غير معرف
+theta2 = np.linspace(0, 4 * np.pi, 100)
+r2, theta2 = np.meshgrid(r2, theta2)
+x2 = r2 * np.cos(theta2)
+y2 = r2 * np.sin(theta2)
+z2 = theta2 # تمثيل الجزء التخيلي للوغاريتم اللي يعطي شكل الحلزون
 
-# عرض الرسم في الموقع
-st.plotly_chart(fig, use_container_width=True)
+fig2 = go.Figure(data=[go.Surface(x=x2, y=y2, z=z2, colorscale='Viridis')])
+st.plotly_chart(fig2, use_container_width=True)
