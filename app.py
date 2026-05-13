@@ -4,9 +4,16 @@ import numpy as np
 
 st.markdown("""
     <style>
-    .main {
-        direction: rtl;
-        text-align: right;
+    /* جعل الصفحة بالكامل من اليمين لليسار */
+    html, body, [data-testid="stAppViewContainer"], .main {
+        direction: rtl !important;
+        text-align: right !important;
+    }
+    /* تعديل اتجاه العناوين والنصوص */
+    h1, h2, h3, p, span {
+        direction: rtl !important;
+        text-align: right !important;
+        display: block !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -18,7 +25,7 @@ st.title("النمذجة البصرية لأسطح ريمان")
 st.write("قسم الرياضيات - جامعة مصراتة")
 
 # --- الرسمة الأولى: دالة الجذر ---
-st.header("سطح ريمان لدالة الجذر التربيعي1-")
+st.header("سطح ريمان لدالة الجذر التربيعي.1")
 r1 = np.linspace(0, 2, 50)
 theta1 = np.linspace(0, 4 * np.pi, 100)
 r1, theta1 = np.meshgrid(r1, theta1)
