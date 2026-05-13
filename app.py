@@ -2,6 +2,15 @@ import streamlit as st
 import plotly.graph_objects as go
 import numpy as np
 
+st.markdown("""
+    <style>
+    .main {
+        direction: rtl;
+        text-align: right;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 # إعدادات الصفحة
 st.set_page_config(page_title="عرض المسابقة - خلود", layout="wide")
 
@@ -9,7 +18,7 @@ st.title("النمذجة البصرية لأسطح ريمان")
 st.write("قسم الرياضيات - جامعة مصراتة")
 
 # --- الرسمة الأولى: دالة الجذر ---
-st.header("1. سطح ريمان لدالة الجذر التربيعي")
+st.header("سطح ريمان لدالة الجذر التربيعي")
 r1 = np.linspace(0, 2, 50)
 theta1 = np.linspace(0, 4 * np.pi, 100)
 r1, theta1 = np.meshgrid(r1, theta1)
