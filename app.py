@@ -49,4 +49,4 @@ st.plotly_chart(fig2, use_container_width=True)
 
 # 6. التذييل (الاسم)
 st.markdown("<br><br><hr>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: black; font-size: 14px;'>إعداد الطالبة: خلود</p>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; font-size: 0.8em; opacity: 0.8;'>إعداد الطالبة: خلود سليمان</div>", unsafe_allow_html=True)
